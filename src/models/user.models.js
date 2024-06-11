@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userInfo = "User";
 
-const Schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -22,12 +22,14 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdat: {
+  createdata: {
     type: Date,
     default: Date.now,
   },
-  updatedat: {
+  updatedata: {
     type: Date,
     default: Date.now,
   },
 });
+
+module.exports = mongoose.model(userInfo, schema);

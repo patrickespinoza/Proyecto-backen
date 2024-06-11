@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
-const postInfo = "Post";
+const postInfo = "post";
 
-const schema = new mongoose.Schema({
+const pschema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    minLength: 2,
-    maxLength: 100,
   },
   image: {
     type: String,
@@ -21,12 +19,14 @@ const schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  createdat: {
+  createdate: {
     type: Date,
     default: Date.now,
   },
-  updatedat: {
+  updatedate: {
     type: Date,
     default: Date.now,
   },
 });
+
+module.exports = mongoose.model(postInfo, pschema);
