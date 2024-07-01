@@ -19,4 +19,19 @@ router.post("/login", async (request, response) => {
   }
 });
 
+router.post("/register", async (request, response) => {
+  try {
+    const { email, password } = request.body;
+    const token = await authUseCase.register(email, password);
+    response.status(201).json({
+      success: true,
+      data: { token },
+    });
+  } catch (error) {
+    response.status(error.status || 500).json({
+      error: error.message,
+    });
+  }
+});
+
 module.exports = router;

@@ -20,4 +20,24 @@ async function login(email, password) {
   return token;
 }
 
-module.exports = { login };
+async function register(email, password) {
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    throw new Error("User already exists");
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ email, password: hashedPassword });
+  await newUser.save();
+
+  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+
+  return token;
+}
+
+module.exports = {
+  login,
+  register,
+};
