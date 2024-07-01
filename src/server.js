@@ -14,6 +14,11 @@ app.use("/user", userRouter);
 app.use("/post", postRouter);
 app.use("/auth", authRouter);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Internal Server Error" });
+});
+
 app.get("/", (request, response) => {
   response.json({
     message: "proyecto backend APIv1",

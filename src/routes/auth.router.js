@@ -21,8 +21,8 @@ router.post("/login", async (request, response) => {
 
 router.post("/register", async (request, response) => {
   try {
-    const { email, password } = request.body;
-    const token = await authUseCase.register(email, password);
+    const { name, email, password } = request.body;
+    const token = await authUseCase.register(name, email, password);
     response.status(201).json({
       success: true,
       data: { token },
