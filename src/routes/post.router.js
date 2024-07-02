@@ -6,7 +6,7 @@ const auth = require("../middlewares/auth.middlewares");
 
 const router = express.Router();
 
-router.post("/", async (request, response) => {
+router.post("/", auth, async (request, response) => {
   try {
     const postCreated = await postCase.createPost(request.body);
     response.json({
