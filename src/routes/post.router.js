@@ -26,7 +26,7 @@ router.post("/", auth, async (request, response) => {
   }
 });
 
-router.get("/posts", async (request, response) => {
+router.get("/", async (request, response) => {
   try {
     const postAll = await postCase.getAll();
     response.json({
