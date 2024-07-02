@@ -17,10 +17,11 @@ router.post("/", async (request, response) => {
       },
     });
   } catch (error) {
-    response.status(error.status || 500);
-    response.json({
+    console.error(error);
+    response.status(500).json({
       success: false,
-      message: error.message,
+      message: "Error creating post",
+      error: error.message,
     });
   }
 });
