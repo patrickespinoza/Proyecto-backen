@@ -32,7 +32,7 @@ async function register(name, email, password) {
   await newUser.save();
 
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "1h",
   });
 
   return token;

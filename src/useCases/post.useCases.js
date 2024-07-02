@@ -19,21 +19,19 @@ async function getAll() {
   return allpost;
 }
 
-async function deleteById(id) {
-  const deletePost = await Posted.findByIdAndDelete(id);
-  return deletePost;
-}
+// async function deleteById(id) {
+//   const deletePost = await Posted.findByIdAndDelete(id);
+//   return deletePost;
+// }
 
-async function updateById(id, newpostData) {
-  const updatePost = await Posted.findByIdAndUpdate(id, newpostData, {
-    new: true,
-  });
-  return updatePost;
-}
+// async function updateById(id, newpostData) {
+//   const updatePost = await Posted.findByIdAndUpdate(id, newpostData, {
+//     new: true,
+//   });
+//   return updatePost;
+// }
 
 module.exports = {
   createPost,
   getAll,
-  deleteById,
-  updateById,
 };
